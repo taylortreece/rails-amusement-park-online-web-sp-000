@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
-    
-    def show
-        @user = User.find_by(id: params[:id])
-    end
 
     def new
         @user = User.new
@@ -19,13 +15,21 @@ class UsersController < ApplicationController
         end
     end
 
+    def show
+        @user = User.find_by(id: params[:id])
+        binding.pry
+        if current_user != @user
+            redirect_to root_path
+        end 
+    end
+
     private
 
     def user_params
-        params.require(:user).permit(:name)
+        params.require(:user).permit(:name, :password, :nausea, :happiness, :height, :tickets, :admin)
     end
 
     def login(user)
-        session[:user_id] = user.id
+       session[:user_id] = user.id
     end
 end
