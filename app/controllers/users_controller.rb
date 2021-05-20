@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-
         if @user.save
             login @user
             redirect_to @user
@@ -17,7 +16,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by(id: params[:id])
-        binding.pry
+
         if current_user != @user
             redirect_to root_path
         end 

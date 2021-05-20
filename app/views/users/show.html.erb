@@ -1,8 +1,10 @@
 <h1><%= @user.name %></h1>
 <%#= binding.pry %>
-<h1>Mood: <%= @user.mood %></h1> 
+<h1>Mood: <%#= @user.mood %></h1> happy
 <h1>Nausea: <%= @user.nausea %></h1>
 <h1>Happiness: <%= @user.happiness %></h1>
 <h1>Height: <%= @user.height %></h1>
 <h1>Tickets: <%= @user.tickets %></h1>
+<h1>ADMIN: <%= @user.admin %></h1>
 
+<%= link_to 'Log Out', '/logout' %>
