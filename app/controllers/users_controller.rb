@@ -26,10 +26,14 @@ class UsersController < ApplicationController
     end
 
     def update
+        if params[:attraction_id]
         @user = User.find_by(id: params[:id])
         attraction = Attraction.find_by(id: params[:attraction_id])
         ride = Ride.create(user_id: @user.id, attraction_id: attraction.id)
-        ride.take_ride
+        flash[:message] = ride.take_ride
+
+        redirect_to @user
+        end
     end
 
     private
