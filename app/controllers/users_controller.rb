@@ -22,6 +22,16 @@ class UsersController < ApplicationController
         end 
     end
 
+    def edit
+    end
+
+    def update
+        @user = User.find_by(id: params[:id])
+        attraction = Attraction.find_by(id: params[:attraction_id])
+        ride = Ride.create(user_id: @user.id, attraction_id: attraction.id)
+        ride.take_ride
+    end
+
     private
 
     def user_params
