@@ -1,3 +1,8 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
 <h1><%= @user.name %></h1>
 <% if @user.admin %>
 <h1>ADMIN: <%= @user.admin %></h1>
